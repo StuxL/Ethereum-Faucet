@@ -4,13 +4,13 @@ contract Faucet
 {
 
   //Give out ether to anybody who requests
-  function withdraw(uint256 withdraw_amount) public
+  function withdraw(uint withdraw_amount) public
   {
     //Limit withdraw amount to 0.1 Eth (100,000,000,000,000,000 wei)
     require(withdraw_amount <= 100000000000000000, "Invalid amount");
 
     //send amount to address who requested
-    (bool success, ) = msg.sender.call{value:withdraw_amount}("");
+    (bool success, ) = msg.sender.call{value: withdraw_amount}("");
     require(success, "Failed to send Ether");
   }
 
